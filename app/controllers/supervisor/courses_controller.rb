@@ -12,6 +12,10 @@ class Supervisor::CoursesController < ApplicationController
   def update
     if @course.update_attributes course_params
       flash[:success] = t "supervisor.update_success"
+      if @course.finish?
+        @course.course_subjects.each {|course_subject|
+          course_subject.update_attributes(status: "finish")}
+      end
       redirect_to supervisor_course_path @course
     else
       flash[:danger] = t "supervisor.update_fail"
