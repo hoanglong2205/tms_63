@@ -29,6 +29,7 @@ en:
       created: "Created %{name}, email: %{email}"
       edit: Save change
       new: Create user
+      end_subject: End Subject
       supervisor: Supervisor
       title: Trainee
       update: Add
@@ -133,6 +134,7 @@ en:
     subject_empty: Subject delete fail
     tasks: Tasks(%{count})
     title: Subjects
+    ended: You finished this subject
   successupdate: Update success
   supervisor:
     finish: Finish
@@ -145,6 +147,7 @@ en:
   tasks:
     name: Name
     no_task: The subject not have task
+    finish: Subject ended. You have completed %{count} task(s) of this subject
   update_profile: Update
   users:
     profile: Profile

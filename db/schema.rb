@@ -50,9 +50,12 @@ ActiveRecord::Schema.define(version: 20160714011543) do
   create_table "subjects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "course_subject_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
+
+  add_index "subjects", ["course_subject_id"], name: "index_subjects_on_course_subject_id"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -78,10 +81,13 @@ ActiveRecord::Schema.define(version: 20160714011543) do
     t.integer  "user_id"
     t.integer  "subject_id"
     t.integer  "user_course_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "course_id"
+    t.boolean  "status",         default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
+  add_index "user_subjects", ["course_id"], name: "index_user_subjects_on_course_id"
   add_index "user_subjects", ["subject_id"], name: "index_user_subjects_on_subject_id"
   add_index "user_subjects", ["user_course_id"], name: "index_user_subjects_on_user_course_id"
   add_index "user_subjects", ["user_id"], name: "index_user_subjects_on_user_id"
